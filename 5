@@ -1,0 +1,18 @@
+import re
+from collections import Counter
+
+def analyze_word_frequency(text):
+    # Удаление знаков препинания и преобразование к нижнему регистру
+    clean_text = re.sub(r'[^\w\s]', '', text.lower())
+    # Разделение текста на слова
+    words = clean_text.split()
+    # Подсчет частоты каждого слова
+    word_frequency = Counter(words)
+    return word_frequency
+
+if __name__ == '__main__':
+    input_text = input("Введите текст для анализа: ")
+    word_frequency = analyze_word_frequency(input_text)
+    print("Частота слов:")
+    for word, frequency in word_frequency.items():
+        print(word, "-", frequency)
